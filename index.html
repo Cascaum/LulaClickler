@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lula Click — O Simulador</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Cabeçalho -->
+<header>
+  <div class="header-title">LULA <span>CLICK</span></div>
+  <div class="header-stats">
+    <div class="stat-block">
+      <div class="stat-label">Reais Totais</div>
+      <div class="stat-value" id="total-money">R$ 0</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label">Por Segundo</div>
+      <div class="stat-value green" id="rps-display">R$ 0/s</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label">Por Clique</div>
+      <div class="stat-value" id="cpc-display">R$ 1</div>
+    </div>
+  </div>
+</header>
+
+<!-- Área principal do jogo dividida em dois painéis -->
+<div class="game-layout">
+
+  <!-- Area de clique no Lula -->
+  <div class="left-panel">
+    <div class="goal-message" id="goal-message">
+      🎯 Meta: Após anos rouban... AJUDANDO o Brasil, ajude o Lula a juntar
+      <strong>R$ 1.000.000</strong> para poder se aposentar!
+    </div>
+
+    <div class="clicker-wrapper" id="clicker">
+      <div class="clicker-img" id="clicker-img">
+        <img id="lula-face" src="assets/img/lula_normal.png" alt="Lula"
+             onerror="this.style.display='none'; document.getElementById('face-fallback').style.display='flex'">
+        <span id="face-fallback" class="placeholder-face" style="display:none;">🤵</span>
+      </div>
+    </div>
+
+    <div class="click-hint">← CLIQUE PARA ARRECADAR →</div>
+    <div class="active-effects" id="active-effects"></div>
+  </div>
+
+  <!-- Loja de upgrades e aliados -->
+  <div class="right-panel">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('upgrades')">🛒 UPGRADES</button>
+      <button class="tab-btn" onclick="switchTab('aliados')">👥 ALIADOS</button>
+    </div>
+    <div class="tab-content active" id="tab-upgrades"></div>
+    <div class="tab-content" id="tab-aliados"></div>
+  </div>
+
+</div>
+
+<!-- Rodapé com histórico dos eventos -->
+<div class="event-log">
+  <div class="log-label">📋 Eventos</div>
+  <div class="log-entries" id="log-entries">
+    <div class="log-entry">Aguardando eventos...</div>
+  </div>
+</div>
+
+<!-- Botão de velocidade 2x -->
+<div class="speed-btn" id="speed-btn" onclick="toggleSpeed()" title="Acelerar 2x">
+  <img src="assets/img/cincoum.png" alt="51" width="75" height="75"
+       onerror="this.style.display='none'; document.getElementById('speed-fallback').style.display='block'">
+  <span id="speed-fallback" style="display:none; font-size:2rem;">🍾</span>
+  <div class="speed-label" id="speed-label">2X</div>
+</div>
+
+<!-- Fundo escuro ao abrir popup de evento -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Popup de evento -->
+<div class="event-popup" id="event-popup">
+  <div class="event-icon" id="ep-icon">✅</div>
+  <div class="event-title" id="ep-title">EVENTO</div>
+  <div class="event-desc" id="ep-desc">Descrição</div>
+  <div class="event-bonus" id="ep-bonus">+Bônus</div>
+  <button class="event-claim-btn" onclick="claimEvent()">REIVINDICAR!</button>
+  <div class="event-timer-bar">
+    <div class="event-timer-fill" id="ep-timer-fill"></div>
+  </div>
+</div>
+
+<!-- Tela vitória -->
+<div class="victory-screen" id="victory-screen">
+  <div class="victory-emoji">🏖️</div>
+  <div class="victory-title">PARABÉNS!</div>
+  <div class="victory-sub">
+    Lula conseguiu graças a você! Após décadas "ajudando o povo",<br>
+    o Pai dos Pobres finalmente pode largar a pobreza<br>
+    e aproveitar sua velhice com R$1 milhão no bolso.
+  </div>
+  <div class="victory-total" id="victory-total">R$ 1.000.000.000</div>
+  <button class="victory-btn" onclick="restartGame()">🔄 JOGAR NOVAMENTE</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
