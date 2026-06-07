@@ -30,7 +30,7 @@ const UPGRADES = [
 const ALIADOS = [
   { id: 'haddad',    icone: '👨‍💼', nome: 'Haddad',    img: 'assets/img/haddad.png',    efeito: '+R$10 por clique',                      preco: 2000  },
   { id: 'bolsonaro', icone: '🟢',  nome: 'Bolsonaro', img: 'assets/img/bolsonaro.png', efeito: '+R$50 por clique',                      preco: 9000  },
-  { id: 'janja',     icone: '👩',  nome: 'Janja',     img: 'assets/img/janja.png',     efeito: '+R$100 fixo por clique (permanente)',   preco: 15000 },
+  { id: 'janja',     icone: '👩',  nome: 'Janja',     img: 'assets/img/janja.png',     efeito: '+R$100 por clique',   preco: 15000 },
 ];
 
 // Eventos aleatórios que aparecem durante o jogo
