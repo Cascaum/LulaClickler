@@ -220,6 +220,7 @@ function toggleSpeed() {
 // Clique no Lula
 
 document.getElementById('clicker').addEventListener('click', (e) => {
+  if (estado.venceu) return;
   const valor = getValorClique();
   estado.dinheiro += valor;
   estado.totalGanho += valor;
@@ -344,6 +345,7 @@ function adicionarLog(mensagem, positivo = false) {
 let ultimoTick = Date.now();
 
 function loopJogo() {
+  if (estado.venceu) return;
   const agora = Date.now();
   let dt = (agora - ultimoTick) / 1000;
   ultimoTick = agora;
